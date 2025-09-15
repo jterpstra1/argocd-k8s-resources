@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: onepassword-connect
+  namespace: 1password
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: onepassword-connect
+  template:
+    metadata:
+      labels:
+        app: onepassword-connect
+    spec:
+      serviceAccountName: onepassword-connect
+      containers:
+      - name: onepassword-connect
+        image: 1password/connect:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: credentials
+          mountPath: /home/opuser/.op
+          readOnly: true
+      volumes:
+      - name: credentials
+        secret:
+          secretName: onepassword-credentials
