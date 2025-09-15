@@ -5,3 +5,6 @@ namespace: ingress-nginx
 
 resources:
 - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.13.2/deploy/static/provider/cloud/deploy.yaml
+
+patchesStrategicMerge:
+  - service-patch.yaml
