@@ -3,11 +3,8 @@ kind: Kustomization
 
 namespace: 1password
 
-# Comment out the manual resources since we'll use the Helm chart
-#resources:
-#  - deployment.yaml
-#  - service.yaml
-#  - persistent-volume.yaml
+resources:
+  - secret.yaml
 
 helmCharts:
 - name: connect
