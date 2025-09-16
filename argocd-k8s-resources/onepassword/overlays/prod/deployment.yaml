@@ -23,7 +23,8 @@ spec:
             - name: data
               mountPath: /home/opuser/.op/data
             - name: credentials
-              mountPath: /home/opuser/.op
+              mountPath: /home/opuser/.op/1password-credentials.json
+              subPath: 1password-credentials.json
               readOnly: true
         - name: connect-sync
           image: 1password/connect-sync:latest
@@ -34,7 +35,8 @@ spec:
             - name: data
               mountPath: /home/opuser/.op/data
             - name: credentials
-              mountPath: /home/opuser/.op
+              mountPath: /home/opuser/.op/1password-credentials.json
+              subPath: 1password-credentials.json
               readOnly: true
       volumes:
         - name: data
