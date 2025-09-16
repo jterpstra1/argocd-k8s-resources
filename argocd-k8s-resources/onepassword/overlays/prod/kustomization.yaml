@@ -1,7 +1,26 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-resources:
-  - deployment.yaml
-  - service.yaml
-  - persistent-volume.yaml
+namespace: 1password
+
+# Comment out the manual resources since we'll use the Helm chart
+#resources:
+#  - deployment.yaml
+#  - service.yaml
+#  - persistent-volume.yaml
+
+helmCharts:
+- name: connect
+  repo: https://1password.github.io/connect-helm-charts
+  version: 2.0.5  # Use the latest stable version
+  releaseName: connect
+  namespace: 1password
+  valuesInline:
+    connect:
+      credentialsName: "onepassword-credentials"
+      credentialsKey: "1password-credentials.json"
+    operator:
+      create: true
+      token:
+        name: "onepassword-token"
+        key: "token"
