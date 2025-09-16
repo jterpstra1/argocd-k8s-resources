@@ -12,6 +12,7 @@ helmCharts:
   version: 2.0.5  # Use the latest stable version
   releaseName: connect
   namespace: 1password
+  includeCRDs: true
   valuesInline:
     connect:
       credentialsName: "onepassword-credentials"
