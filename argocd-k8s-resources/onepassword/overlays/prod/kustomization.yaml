@@ -15,8 +15,8 @@ helmCharts:
   includeCRDs: true
   valuesInline:
     connect:
-      credentialsName: "onepassword-credentials"
-      credentialsKey: "1password-credentials.json"
+      credentialsName: "op-credentials"
+      credentialsKey: "1pass-creds"
     operator:
       create: true
       token:
