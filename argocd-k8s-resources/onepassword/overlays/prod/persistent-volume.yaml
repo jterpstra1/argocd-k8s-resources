@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: onepassword-connect-pv
+  namespace: 1password
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    server: 192.168.1.230
+    path: /srv/nfs/onepassword-connect
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: onepassword-connect-pvc
+  namespace: 1password
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Gi
+

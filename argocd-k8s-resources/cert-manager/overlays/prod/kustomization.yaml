@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: cert-manager
+
+helmCharts:
+- name: cert-manager
+  repo: https://charts.jetstack.io
+  version: v1.18.2
+  releaseName: cert-manager
+  namespace: cert-manager
+  valuesInline:
+    crds:
+      enabled: true
+    global:
+      leaderElection:
+        namespace: cert-manager
+    config:
+      featureGates:
+        ACMEHTTP01IngressPathTypeExact: false # https://cert-manager.io/docs/releases/release-notes/release-notes-1.18/#bug-or-regression-2
