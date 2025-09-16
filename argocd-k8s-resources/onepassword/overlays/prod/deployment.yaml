@@ -27,10 +27,13 @@ spec:
             - "/bin/sh"
             - "-c"
           args:
-            - "mkdir -p /home/opuser/.op/data && chown -R 999 /home/opuser && chmod -R 700 /home/opuser && chmod -f -R 600 /home/opuser/.op/config || :"
+            - "mkdir -p /home/opuser/.op/data && chown -R 999 /home/opuser && chmod -R 700 /home/opuser && chmod -f -R 600 /home/opuser/.config/* || :"
           volumeMounts:
             - mountPath: /home/opuser/.op/data
               name: shared-data
+            - mountPath: /home/opuser/.config
+              name: credentials
+              readOnly: true
       containers:
         - name: connect-api
           image: 1password/connect-api:latest
