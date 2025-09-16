@@ -6,24 +6,42 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:
-      app: onepassword-connect
+    matchLabels: { app: onepassword-connect }
   template:
     metadata:
-      labels:
-        app: onepassword-connect
+      labels: { app: onepassword-connect }
     spec:
-      serviceAccountName: onepassword-connect
       containers:
-      - name: onepassword-connect
-        image: 1password/connect:latest
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - name: credentials
-          mountPath: /home/opuser/.op
-          readOnly: true
+        - name: connect-api
+          image: 1password/connect-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: OP_LOG_LEVEL
+              value: info
+          volumeMounts:
+            - name: data
+              mountPath: /home/opuser/.op/data
+            - name: credentials
+              mountPath: /home/opuser/.op
+              readOnly: true
+        - name: connect-sync
+          image: 1password/connect-sync:latest
+          env:
+            - name: OP_LOG_LEVEL
+              value: info
+          volumeMounts:
+            - name: data
+              mountPath: /home/opuser/.op/data
+            - name: credentials
+              mountPath: /home/opuser/.op
+              readOnly: true
       volumes:
-      - name: credentials
-        secret:
-          secretName: onepassword-credentials
+        - name: data
+          emptyDir: {}
+        - name: credentials
+          secret:
+            secretName: onepassword-credentials
+            items:
+              - key: 1password-credentials.json
+                path: 1password-credentials.json
