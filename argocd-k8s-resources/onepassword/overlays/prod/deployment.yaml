@@ -6,13 +6,13 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: { app: onepassword-connect }
+    matchLabels: onepassword-connect
   template:
     metadata:
-      labels: { app: onepassword-connect }
+      labels: onepassword-connect
     spec:
       volumes:
-        - name: data
+        - name: shared-data
           emptyDir: {}
         - name: credentials
           secret:
@@ -27,7 +27,7 @@ spec:
             - "mkdir -p /home/opuser/.op/data && chown -R 999 /home/opuser && chmod -R 700 /home/opuser && chmod -f -R 600 /home/opuser/.op/config || :"
           volumeMounts:
             - mountPath: /home/opuser/.op/data
-              name: data
+              name: shared-data
       containers:
         - name: connect-api
           image: 1password/connect-api:latest
