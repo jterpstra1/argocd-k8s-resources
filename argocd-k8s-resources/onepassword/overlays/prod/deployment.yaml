@@ -6,10 +6,12 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: onepassword-connect
+    matchLabels:
+      app: onepassword-connect
   template:
     metadata:
-      labels: onepassword-connect
+      labels:
+        app: onepassword-connect
     spec:
       volumes:
         - name: shared-data
