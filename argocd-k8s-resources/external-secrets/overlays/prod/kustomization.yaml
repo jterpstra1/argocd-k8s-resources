@@ -3,8 +3,9 @@ kind: Kustomization
 
 namespace: external-secrets
 
-#resources:
-#  - secretstore.yaml
+resources:
+- secrets.yaml
+- clustersecretstore.yaml
 
 helmCharts:
 - name: external-secrets
