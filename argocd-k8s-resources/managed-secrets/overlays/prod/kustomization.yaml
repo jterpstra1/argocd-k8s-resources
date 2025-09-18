@@ -5,3 +5,4 @@ namespace: managed-secrets
 
 resources:
 - secrets.yaml
+- clustersecretstore.yaml
