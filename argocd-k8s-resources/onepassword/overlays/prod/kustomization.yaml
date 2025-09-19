@@ -3,9 +3,6 @@ kind: Kustomization
 
 namespace: 1password
 
-resources:
-  - secret.yaml
-
 helmCharts:
 - name: connect
   repo: https://1password.github.io/connect-helm-charts
