@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: vdgtconsultancy.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-frontend
+                port:
+                  number: 85
