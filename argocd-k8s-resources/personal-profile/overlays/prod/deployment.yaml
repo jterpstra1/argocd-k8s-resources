@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/jterpstra1/personal-portfolio-backend:0.0.7
+          image: ghcr.io/jterpstra1/personal-portfolio-backend:0.0.8
           ports:
             - containerPort: 4000
           env:

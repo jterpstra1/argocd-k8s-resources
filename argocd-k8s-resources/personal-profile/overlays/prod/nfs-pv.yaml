@@ -13,5 +13,5 @@ spec:
     - nfsvers=4.1
   nfs:
     server: 192.168.1.230
-    path: /srv/nfs/personal-profile
+    path: /srv/nfs/personal-portfolio
 
