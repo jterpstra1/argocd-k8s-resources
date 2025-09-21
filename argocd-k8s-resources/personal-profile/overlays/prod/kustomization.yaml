@@ -8,5 +8,5 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
-# - nfs-pv.yaml  # unmanaged for deletion
-# - nfs-pvc.yaml # unmanaged for deletion
+- nfs-pv.yaml
+- nfs-pvc.yaml
