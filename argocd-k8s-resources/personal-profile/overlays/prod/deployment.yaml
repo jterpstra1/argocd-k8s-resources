@@ -54,5 +54,12 @@ spec:
                 secretKeyRef:
                   name: personal-profile-jwt-secret
                   key: personal-profile-jwt-secret
+          volumeMounts:
+            - name: backend-data
+              mountPath: /app/data
+      volumes:
+        - name: backend-data
+          persistentVolumeClaim:
+            claimName: personal-profile-nfs-pvc
       imagePullSecrets:
         - name: ghcr-pull-secret
