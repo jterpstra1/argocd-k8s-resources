@@ -8,5 +8,3 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
-- nfs-pv.yaml
-- nfs-pvc.yaml
