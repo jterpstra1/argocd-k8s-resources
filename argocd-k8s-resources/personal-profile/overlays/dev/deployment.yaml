@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-frontend-dev
+  labels:
+    app: portfolio-frontend-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-frontend-dev
+  template:
+    metadata:
+      labels:
+        app: portfolio-frontend-dev
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/jterpstra1/personal-portfolio-frontend:0.0.18
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: ghcr-pull-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-backend-dev
+  labels:
+    app: portfolio-backend-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-backend-dev
+  template:
+    metadata:
+      labels:
+        app: portfolio-backend-dev
+    spec:
+      containers:
+        - name: backend
+          image: ghcr.io/jterpstra1/personal-portfolio-backend:0.0.10
+          ports:
+            - containerPort: 4000
+          env:
+            - name: ADMIN_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: personal-profile-admin-hash-secret
+                  key: personal-profile-admin-hash
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: personal-profile-jwt-secret
+                  key: personal-profile-jwt-secret
+          volumeMounts:
+            - name: backend-data
+              mountPath: /app/data
+      volumes:
+        - name: backend-data
+          persistentVolumeClaim:
+            claimName: personal-profile-nfs-pvc
+      imagePullSecrets:
+        - name: ghcr-pull-secret
