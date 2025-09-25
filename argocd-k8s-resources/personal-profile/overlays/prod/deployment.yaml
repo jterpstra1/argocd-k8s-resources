@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/jterpstra1/prd-personal-portfolio-frontend:1.1.0
+          image: ghcr.io/jterpstra1/prd-personal-portfolio-frontend:1.2.0
           ports:
             - containerPort: 80
       imagePullSecrets:
