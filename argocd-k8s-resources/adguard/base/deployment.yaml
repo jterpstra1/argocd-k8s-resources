@@ -14,6 +14,15 @@ spec:
       labels:
         app: adguard
     spec:
+      initContainers:
+        - name: bootstrap-config
+          image: busybox
+          command: ["sh", "-c", "if [ ! -f /config/AdGuardHome.yaml ]; then cp /bootstrap/AdGuardHome.yaml /config/AdGuardHome.yaml; fi"]
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: bootstrap
+              mountPath: /bootstrap
       containers:
         - name: adguard
           image: adguard/adguardhome:latest
@@ -26,9 +35,6 @@ spec:
           volumeMounts:
             - mountPath: /opt/adguardhome/conf
               name: config
-            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
-              name: bootstrap
-              subPath: AdGuardHome.yaml
       volumes:
         - name: config
           persistentVolumeClaim:
