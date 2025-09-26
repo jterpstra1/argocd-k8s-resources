@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: adguard-ui
 spec:
+  ingressClassName: nginx
   rules:
     - host: adguard-b.terpstra.tech
       http:
