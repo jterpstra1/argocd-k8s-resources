@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: adguard-config-a
 spec:
+  storageClassName: ""   # must match PV
   accessModes:
     - ReadWriteOnce
   resources:
