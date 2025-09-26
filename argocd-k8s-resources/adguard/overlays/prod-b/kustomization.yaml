@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../base
   - ingress.yaml
+  - pvc.yaml
 
 nameSuffix: -b
 
@@ -16,12 +17,13 @@ patches:
       - op: add
         path: /spec/loadBalancerIP
         value: 192.168.1.54
-
-  # Rename PVC so each instance gets its own storage
   - target:
-      kind: PersistentVolumeClaim
-      name: adguard-config
+      kind: PersistentVolume
+      name: pv-adguard
     patch: |-
       - op: replace
         path: /metadata/name
-        value: adguard-config-b
+        value: pv-adguard-b
+      - op: replace
+        path: /spec/nfs/path
+        value: /srv/nfs/adguard-b
