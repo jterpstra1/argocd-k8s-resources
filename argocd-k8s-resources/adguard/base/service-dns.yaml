@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard-dns
+  labels:
+    app: adguard
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 53
+      protocol: UDP
+      targetPort: 53
+    - port: 53
+      protocol: TCP
+      targetPort: 53
+  selector:
+    app: adguard

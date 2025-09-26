@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard
+  labels:
+    app: adguard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard
+  template:
+    metadata:
+      labels:
+        app: adguard
+    spec:
+      containers:
+        - name: adguard
+          image: adguard/adguardhome:latest
+          ports:
+            - containerPort: 53
+              protocol: UDP
+            - containerPort: 53
+              protocol: TCP
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /opt/adguardhome/conf
+              name: config
+            - mountPath: /opt/adguardhome/conf/AdGuardHome.yaml
+              name: bootstrap
+              subPath: AdGuardHome.yaml
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: adguard-config
+        - name: bootstrap
+          configMap:
+            name: adguard-configmap
