@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - deployment.yaml
-  - pvc.yaml
   - service-dns.yaml
   - service-ui.yaml
   - configmap.yaml
+  - pv.yaml
