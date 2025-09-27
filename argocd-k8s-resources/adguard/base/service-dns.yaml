@@ -9,6 +9,7 @@ metadata:
 spec:
   type: LoadBalancer
   loadBalancerIP: TO_OVERLAY
+  externalTrafficPolicy: Local
   ports:
     - name: dns-udp
       port: 53
