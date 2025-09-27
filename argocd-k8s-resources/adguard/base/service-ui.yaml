@@ -4,6 +4,8 @@ metadata:
   name: adguard-ui
   labels:
     app: adguard
+  annotations:
+    metallb.universe.tf/allow-shared-ip: TO_OVERLAY
 spec:
   type: LoadBalancer
   loadBalancerIP: TO_OVERLAY

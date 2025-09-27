@@ -9,7 +9,7 @@ resources:
 nameSuffix: -b
 
 patches:
-  # Assign unique LoadBalancer IP for DNS
+  # Assign unique LoadBalancer IP and shared-ip annotation for DNS
   - target:
       kind: Service
       name: adguard-dns
@@ -17,7 +17,10 @@ patches:
       - op: add
         path: /spec/loadBalancerIP
         value: 192.168.1.54
-  # Expose admin UI on same IP as DNS
+      - op: replace
+        path: /metadata/annotations/metallb.universe.tf~1allow-shared-ip
+        value: adguard-b
+  # Assign shared-ip annotation and LoadBalancer IP for UI
   - target:
       kind: Service
       name: adguard-ui
@@ -25,6 +28,9 @@ patches:
       - op: add
         path: /spec/loadBalancerIP
         value: 192.168.1.54
+      - op: replace
+        path: /metadata/annotations/metallb.universe.tf~1allow-shared-ip
+        value: adguard-b
   - target:
       kind: PersistentVolume
       name: pv-adguard
