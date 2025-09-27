@@ -5,7 +5,8 @@ metadata:
   labels:
     app: adguard
 spec:
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: TO_OVERLAY
   ports:
     - port: 3000
       targetPort: 3000

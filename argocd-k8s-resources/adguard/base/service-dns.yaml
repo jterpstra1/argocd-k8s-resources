@@ -6,6 +6,7 @@ metadata:
     app: adguard
 spec:
   type: LoadBalancer
+  loadBalancerIP: TO_OVERLAY
   ports:
     - name: dns-udp
       port: 53

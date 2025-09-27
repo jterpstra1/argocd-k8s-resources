@@ -17,6 +17,14 @@ patches:
       - op: add
         path: /spec/loadBalancerIP
         value: 192.168.1.54
+  # Expose admin UI on same IP as DNS
+  - target:
+      kind: Service
+      name: adguard-ui
+    patch: |-
+      - op: add
+        path: /spec/loadBalancerIP
+        value: 192.168.1.54
   - target:
       kind: PersistentVolume
       name: pv-adguard
