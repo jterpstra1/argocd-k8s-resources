@@ -15,8 +15,7 @@ spec:
                 name: adguard-ui-a
                 port:
                   number: 3000
-    - host: adguard.local
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
