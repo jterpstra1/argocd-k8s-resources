@@ -5,7 +5,7 @@ metadata:
   labels:
     app: adguard
   annotations:
-    metallb.universe.tf/allow-shared-ip: TO_OVERLAY
+    metallb.io/allow-shared-ip: TO_OVERLAY
 spec:
   type: LoadBalancer
   loadBalancerIP: TO_OVERLAY
