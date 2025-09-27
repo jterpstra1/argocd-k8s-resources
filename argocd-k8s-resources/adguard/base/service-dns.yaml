@@ -4,8 +4,6 @@ metadata:
   name: adguard-dns
   labels:
     app: adguard
-  annotations:
-    metallb.io/allow-shared-ip: TO_OVERLAY
 spec:
   type: LoadBalancer
   loadBalancerIP: TO_OVERLAY
