@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: 1password
+
+helmCharts:
+- name: connect
+  repo: https://1password.github.io/connect-helm-charts
+  version: 2.0.5
+  releaseName: connect
+  namespace: 1password
+  includeCRDs: true
+  valuesInline:
+    connect:
+      credentialsName: "op-credentials"
+      credentialsKey: "1pass-creds"
+    operator:
+      create: true
+      token:
+        name: "onepassword-token"
+        key: "token"
