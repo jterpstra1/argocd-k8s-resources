@@ -6,7 +6,7 @@ namespace: 1password
 helmCharts:
 - name: connect
   repo: https://1password.github.io/connect-helm-charts
-  version: 2.0.5
+  version: 2.3.0
   releaseName: connect
   namespace: 1password
   includeCRDs: true
