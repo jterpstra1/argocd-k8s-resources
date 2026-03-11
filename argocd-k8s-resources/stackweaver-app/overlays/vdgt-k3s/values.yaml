@@ -58,18 +58,18 @@ secrets:
   # PostgreSQL credentials
   # Auto-generates a random 24-char password when secretName is empty.
   postgresql:
-    secretName: ""
+    secretName: stackweaver-postgresql
     keys:
       password: password
   # Redis credentials (optional — only needed if Redis auth is enabled)
   redis:
-    secretName: ""
+    secretName: stackweaver-redis
     keys:
       password: password
   # MinIO / S3 credentials
   # Auto-generates access-key ("minioadmin") + random secret-key when empty.
   minio:
-    secretName: ""
+    secretName: stackweaver-minio
     keys:
       accessKey: access-key
       secretKey: secret-key
@@ -77,7 +77,7 @@ secrets:
   # Auto-generates a random key when secretName is empty.
   # Used by API, runner, and ansible-runner for encrypting variables/credentials.
   encryption:
-    secretName: ""
+    secretName: stackweaver-encryption
     keys:
       key: encryption-key
   # Zitadel credentials
@@ -85,7 +85,7 @@ secrets:
   # After zitadel-init runs, it populates clientId, clientSecret, etc.
   # For external Zitadel: supply all keys directly.
   zitadel:
-    secretName: ""
+    secretName: stackweaver-zitadel
     keys:
       masterkey: masterkey
       adminPassword: admin-password
