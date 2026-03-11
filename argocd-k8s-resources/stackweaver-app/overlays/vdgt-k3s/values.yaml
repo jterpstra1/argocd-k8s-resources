@@ -138,8 +138,8 @@ api:
   affinity: {}
   # GitHub App integration (non-secret config)
   githubApp:
-    id: "3025828"
-    name: "gh-app-sw"
+    id: "3063077"
+    name: "stackweaver-instance-1"
 # -- Frontend (nginx-served SPA, port 80) --
 frontend:
   image:
@@ -180,8 +180,8 @@ orchestrator:
   tolerations: []
   affinity: {}
   githubApp:
-    id: "3025828"
-    name: "gh-app-sw"
+    id: "3063077"
+    name: "stackweaver-instance-1"
 # -- Terraform Runner --
 runner:
   image:
