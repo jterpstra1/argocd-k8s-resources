@@ -1,0 +1,30 @@
+# Dynamic provisioning via the rwx-nfs storage class (NFS provisioner on Hetzner VM).
+
+# ── Runner Workspaces ─────────────────────────────────────────────────────────
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: runner-workspaces-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: rwx-nfs
+  resources:
+    requests:
+      storage: 10Gi
+
+# ── Zitadel PAT ───────────────────────────────────────────────────────────────
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zitadel-pat-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: rwx-nfs
+  resources:
+    requests:
+      storage: 1Mi
