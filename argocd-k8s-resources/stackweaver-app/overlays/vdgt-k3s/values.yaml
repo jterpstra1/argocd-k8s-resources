@@ -85,7 +85,8 @@ secrets:
   # After zitadel-init runs, it populates clientId, clientSecret, etc.
   # For external Zitadel: supply all keys directly.
   zitadel:
-    secretName: stackweaver-zitadel
+    #secretName: stackweaver-
+    secretName: ""
     keys:
       masterkey: masterkey
       adminPassword: admin-password
