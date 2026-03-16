@@ -104,7 +104,7 @@ secrets:
       signingKey: signing-key
   # GitHub App credentials (optional — for GitHub VCS integration)
   githubApp:
-    secretName: stackweaver-github-app
+    secretName: stackweaver-github-app-test
     keys:
       privateKey: private-key
       webhookSecret: webhook-secret
