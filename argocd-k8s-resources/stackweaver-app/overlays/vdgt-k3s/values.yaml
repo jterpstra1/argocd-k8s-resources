@@ -140,7 +140,7 @@ api:
   # GitHub App integration (non-secret config)
   githubApp:
     id: "3063077"
-    name: "stackweaver-instance-1"
+    name: "Stackweaver-instance-1"
 # -- Frontend (nginx-served SPA, port 80) --
 frontend:
   image:
