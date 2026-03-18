@@ -365,8 +365,14 @@ oidc:
   issuerUrl: ""
 # ── SSO Configuration ─────────────────────────────────────────────────────────
 sso:
-  secretName: stackweaver-sso
   oidcProvider:
     name: "VDGT PocketID"
     issuer: "https://id.terpstra.tech"
     clientId: "885c06a6-2c2a-48f8-baa2-31a9e258dc7a"
+  # Pre-existing K8s Secret containing SSO client secrets.
+  # Both keys are needed if you configure Azure AD and a Generic OIDC provider simultaneously.
+  secretName: stackweaver-sso
+  # Key names within the Secret. Override these if your existing Secret uses
+  # different key names (e.g. from External Secrets Operator or Sealed Secrets).
+  keys:
+    oidcProviderClientSecret: client-secret
