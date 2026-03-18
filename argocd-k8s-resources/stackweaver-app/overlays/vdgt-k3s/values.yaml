@@ -365,5 +365,8 @@ oidc:
   issuerUrl: ""
 # ── SSO Configuration ─────────────────────────────────────────────────────────
 sso:
-  enableOidcTeamSync: false
-  oidcRemoveFromNonSsoTeams: false
+  secretName: stackweaver-sso
+  oidcProvider:
+    name: "VDGT PocketID"
+    issuer: "https://id.terpstra.tech"
+    clientId: "885c06a6-2c2a-48f8-baa2-31a9e258dc7a"
